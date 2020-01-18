@@ -3,7 +3,7 @@ defmodule StockScreener.Repo.Migrations.CreateQuotes do
 
   def change do
     create table(:quotes) do
-      add :symbol, :string
+      add :symbol_id, references(:symbols)
       add :date, :date
       add :high, :float
       add :low, :float

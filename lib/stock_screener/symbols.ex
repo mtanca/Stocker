@@ -7,6 +7,7 @@ defmodule StockScreener.Symbols do
   alias StockScreener.Repo
 
   alias StockScreener.Symbols.Symbol
+  alias StockScreener.Quotes.Quote
 
   @doc """
   Returns the list of symbols.
@@ -69,7 +70,7 @@ defmodule StockScreener.Symbols do
   """
   def update_symbol(%Symbol{} = symbol, attrs) do
     symbol
-    |> symbol.changeset(attrs)
+    |> Symbol.changeset(attrs)
     |> Repo.update()
   end
 
@@ -99,6 +100,17 @@ defmodule StockScreener.Symbols do
 
   """
   def change_symbol(%Symbol{} = symbol) do
-    symbol.changeset(symbol, %{})
+    Symbol.changeset(symbol, %{})
+  end
+
+  def get_quotes(%Symbol{} = symbol) do
+    symbol_id = symbol.id
+
+    Repo.all(
+      from(q in Quote,
+        where: q.symbol_id == ^symbol_id,
+        order_by: [desc: q.date]
+      )
+    )
   end
 end

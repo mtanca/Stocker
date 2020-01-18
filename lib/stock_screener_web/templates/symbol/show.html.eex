@@ -1,0 +1,34 @@
+<h1>Show Symbol</h1>
+
+<ul>
+  <li>
+    <strong>Ticker:</strong>
+    <%= @symbol.symbol %>
+  </li>
+</ul>
+
+<h1>Historical Data</h1>
+<table>
+  <th>Date</th>
+  <th>Open</th>
+  <th>Close</th>
+  <th>High</th>
+  <th>Low</th>
+  <th>Adj. Close</th>
+  <th>Volume</th>
+<%= for hd <- @historical_data do %>
+    <tr>
+      <td><%= hd.date %></td>
+      <td><%= hd.open %></td>
+      <td><%= hd.close %></td>
+      <td><%= hd.high %></td>
+      <td><%= hd.low %></td>
+      <td><%= hd.adj_close %></td>
+      <td><%= hd.volume %></td>
+    </tr>
+<% end %>
+</table>
+
+
+<span><%= link "Edit", to: Routes.symbol_path(@conn, :edit, @symbol) %></span>
+<span><%= link "Back", to: Routes.symbol_path(@conn, :index) %></span>

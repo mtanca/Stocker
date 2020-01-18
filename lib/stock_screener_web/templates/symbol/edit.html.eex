@@ -1,0 +1,5 @@
+<h1>Edit Symbol</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.symbol_path(@conn, :update, @symbol)) %>
+
+<span><%= link "Back", to: Routes.symbol_path(@conn, :index) %></span>

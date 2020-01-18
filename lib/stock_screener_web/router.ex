@@ -17,6 +17,8 @@ defmodule StockScreenerWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    resources "/symbols", SymbolController
   end
 
   # Other scopes may use custom stacks.

@@ -43,8 +43,11 @@ defmodule StockScreener.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:yahoo_finance_elixir, git: "https://github.com/mtanca/YahooFinanceElixir", ref: "37b6c3f712151f7bbd3f91201ddae0de35214499"},
-      {:timex, "~> 3.5"}
+      {:yahoo_finance_elixir,
+       git: "https://github.com/mtanca/YahooFinanceElixir",
+       ref: "37b6c3f712151f7bbd3f91201ddae0de35214499"},
+      {:timex, "~> 3.5"},
+      {:statistics, "~> 0.6.2"}
     ]
   end
 

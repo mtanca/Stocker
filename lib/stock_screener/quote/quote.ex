@@ -8,6 +8,9 @@ defmodule StockScreener.Quotes.Quote do
     field :high, :float
     field :low, :float
     field :open, :float
+    field :close, :float
+    field :adj_close, :float
+    field :volume, :integer
 
     timestamps()
   end
@@ -15,7 +18,17 @@ defmodule StockScreener.Quotes.Quote do
   @doc false
   def changeset(q, attrs) do
     q
-    |> cast(attrs, [:date, :high, :low, :open, :low])
-    |> validate_required([:symbol, :date, :high, :low, :open, :low])
+    |> cast(attrs, [:symbol_id, :date, :high, :low, :open, :low, :close, :adj_close, :volume])
+    |> validate_required([
+      :symbol_id,
+      :date,
+      :high,
+      :low,
+      :open,
+      :low,
+      :close,
+      :adj_close,
+      :volume
+    ])
   end
 end

@@ -496,7 +496,7 @@ Enum.each(symbols, fn symbol ->
         {:ok, date} = Date.from_iso8601(Enum.at(row, 0))
 
         params = %{
-          symbol: symbol,
+          symbol_id: symbol_record.id,
           date: date,
           open: Enum.at(row, 1) |> String.to_float(),
           close: Enum.at(row, 2) |> String.to_float(),

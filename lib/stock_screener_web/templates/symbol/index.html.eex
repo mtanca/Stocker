@@ -1,0 +1,25 @@
+<h1>Listing Symbols</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Symbols</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for symbol <- @symbols do %>
+    <tr>
+      <td><%= symbol.symbol %></td>
+      <td>
+        <span><%= link "Show", to: Routes.symbol_path(@conn, :show, symbol) %></span>
+        <span><%= link "Edit", to: Routes.symbol_path(@conn, :edit, symbol) %></span>
+        <span><%= link "Delete", to: Routes.symbol_path(@conn, :delete, symbol), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Quote", to: Routes.symbol_path(@conn, :new) %></span>
