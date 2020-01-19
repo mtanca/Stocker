@@ -29,7 +29,7 @@ defmodule StockScreener.Indicators.BollingerBandsTest do
         90.65
       ]
       |> Enum.map(fn close_price ->
-        %Quote{close: close_price}
+        %Quote{adj_close: close_price}
       end)
 
     {:ok, %{quotes: quotes}}

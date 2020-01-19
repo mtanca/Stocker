@@ -1,13 +1,22 @@
-<h1>Show Symbol</h1>
-
 <ul>
-  <li>
-    <strong>Ticker:</strong>
-    <%= @symbol.symbol %>
-  </li>
+  <strong>Ticker:</strong>
+  <%= @symbol.symbol %>
 </ul>
 
-<h1>Historical Data</h1>
+<h2>Technical Screens</h2>
+<ul>
+  <strong>Bolling Bands (20, 2):</strong>
+  <li> <strong>Upper: </strong> <%= @bollinger_bands["Upper Band"] %></li>
+  <li> <strong>Middle: </strong> <%= @bollinger_bands["Middle Band"] %></li>
+  <li> <strong>Lower: </strong> <%= @bollinger_bands["Lower Band"]%></li>
+</ul>
+<ul>
+  <strong>Relative Strength Index (14):</strong>
+  <li> <strong>RSI: </strong> <%= @rsi %></li>
+</ul>
+
+
+<h2>Historical Data</h2>
 <table>
   <th>Date</th>
   <th>Open</th>

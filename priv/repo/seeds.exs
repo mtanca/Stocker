@@ -11,9 +11,7 @@
 # and so on) as they will fail if something goes wrong.
 
 alias StockScreener.Symbols
-alias StockScreener.Symbols.Symbol
 alias StockScreener.Quotes
-alias StockScreener.Quotes.Quote
 
 require Logger
 
@@ -338,7 +336,6 @@ symbols = [
   "PPL",
   "PX",
   "PCP",
-  "PCLN",
   "PFG",
   "PG",
   "PGR",
@@ -355,7 +352,6 @@ symbols = [
   "RRC",
   "RTN",
   "O",
-  "RHT",
   "REGN",
   "RF",
   "RSG",
@@ -363,18 +359,13 @@ symbols = [
   "ROK",
   "ROP",
   "ROST",
-  "RLC",
   "R",
   "CRM",
-  "SNDK",
-  "SCG",
   "SLB",
-  "SNI",
   "STX",
   "SEE",
   "SRE",
   "SHW",
-  "SIAL",
   "SPG",
   "SWKS",
   "SLG",
@@ -384,11 +375,8 @@ symbols = [
   "LUV",
   "SWN",
   "SE",
-  "STJ",
   "SWK",
-  "SPLS",
   "SBUX",
-  "HOT",
   "STT",
   "SRCL",
   "SYK",
@@ -398,18 +386,15 @@ symbols = [
   "TROW",
   "TGT",
   "TEL",
-  "TE",
   "TGNA",
   "THC",
   "TDC",
-  "TSO",
   "TXN",
   "TXT",
   "HSY",
   "TRV",
   "TMO",
   "TIF",
-  "TWX",
   "TWC",
   "TJK",
   "TMK",
@@ -419,7 +404,6 @@ symbols = [
   "TRIP",
   "FOXA",
   "TSN",
-  "TYC",
   "UA",
   "UNP",
   "UNH",
@@ -451,7 +435,6 @@ symbols = [
   "WU",
   "WY",
   "WHR",
-  "WFM",
   "WMB",
   "WEC",
   "WYN",
@@ -459,7 +442,6 @@ symbols = [
   "XEL",
   "XRX",
   "XLNX",
-  "XL",
   "XYL",
   "YHOO",
   "YUM",
@@ -471,10 +453,10 @@ symbols = [
 ]
 
 Enum.each(symbols, fn symbol ->
-  IO.puts("\n\nCreate symbol #{symbol}...\n")
+  IO.puts("\n\nCreate symbol #{symbol}...")
   {:ok, symbol_record} = Symbols.create_symbol(%{symbol: symbol})
 
-  IO.puts("Fetching quotes for #{symbol}...")
+  IO.puts("Fetching quotes for #{symbol}...\n")
 
   case YahooFinance.historical(symbol, "2019-12-01", "2020-01-18") do
     {:error, _} ->

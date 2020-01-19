@@ -14,7 +14,7 @@ defmodule StockScreener.Indicators.BollingerBands do
   # Calculates the bands. Data should be given in ASCD order. See test for more info.
   @spec calculate(data :: historical_data()) :: {:ok, map()}
   def calculate(data) do
-    closing_prices = Enum.map(data, fn d -> d.close end)
+    closing_prices = Enum.map(data, fn d -> d.adj_close end)
     avg = Statistics.mean(closing_prices)
     std = Statistics.stdev(closing_prices)
 
