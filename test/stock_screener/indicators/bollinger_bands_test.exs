@@ -1,4 +1,4 @@
-defmodule StockScreener.BollingerBandsTest do
+defmodule StockScreener.Indicators.BollingerBandsTest do
   use ExUnit.Case
 
   alias StockScreener.Quotes.Quote
@@ -29,25 +29,24 @@ defmodule StockScreener.BollingerBandsTest do
         90.65
       ]
       |> Enum.map(fn close_price ->
-        %Quote{
-          close: close_price}
+        %Quote{close: close_price}
       end)
 
-      {:ok, %{quotes: quotes}}
+    {:ok, %{quotes: quotes}}
   end
 
-
-  describe "run/1" do
+  describe "calculate/1" do
     test "returns the correct values", %{quotes: quotes} do
       expected_average = 91.05
       expected_lower_band = 87.96
       expected_upper_band = 94.15
 
-      %{
-        "Lower Band" => lower_band,
-        "Middle Band" => average,
-        "Upper Band" => upper_band
-      } = BollingerBands.calculate(quotes)
+      {:ok,
+       %{
+         "Lower Band" => lower_band,
+         "Middle Band" => average,
+         "Upper Band" => upper_band
+       }} = BollingerBands.calculate(quotes)
 
       assert average == expected_average
       assert lower_band == expected_lower_band

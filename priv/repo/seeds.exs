@@ -359,10 +359,8 @@ symbols = [
   "REGN",
   "RF",
   "RSG",
-  "RAI",
   "RHI",
   "ROK",
-  "COL",
   "ROP",
   "ROST",
   "RLC",
@@ -510,5 +508,5 @@ Enum.each(symbols, fn symbol ->
       end)
   end
 
-  Process.sleep(400)
+  Process.sleep(800)
 end)
