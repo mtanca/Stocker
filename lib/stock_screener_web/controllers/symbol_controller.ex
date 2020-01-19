@@ -3,6 +3,7 @@ defmodule StockScreenerWeb.SymbolController do
 
   alias StockScreener.Symbols
   alias StockScreener.Symbols.Symbol
+  alias StockScreener.Indicators.{BollingerBands, RelativeStrengthIndex}
 
   def index(conn, _params) do
     symbols = Symbols.list_symbols()
@@ -29,7 +30,19 @@ defmodule StockScreenerWeb.SymbolController do
   def show(conn, %{"id" => id}) do
     symbol = Symbols.get_symbol!(id)
     historical_data = Symbols.get_quotes(symbol)
-    render(conn, "show.html", symbol: symbol, historical_data: historical_data)
+
+    bb_data = historical_data |> Enum.take(20) |> Enum.reverse()
+    rsi_data = historical_data |> Enum.reverse()
+
+    {:ok, bollinger_bands} = BollingerBands.calculate(bb_data)
+    {:ok, rsi} = RelativeStrengthIndex.calculate(rsi_data, 14)
+
+    render(conn, "show.html",
+      symbol: symbol,
+      historical_data: historical_data,
+      bollinger_bands: bollinger_bands,
+      rsi: rsi
+    )
   end
 
   def edit(conn, %{"id" => id}) do

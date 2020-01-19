@@ -24,7 +24,7 @@ defmodule StockScreener.Indicators.RelativeStrengthIndexTest do
         46.28
       ]
       |> Enum.map(fn close_price ->
-        %Quote{close: close_price}
+        %Quote{adj_close: close_price, open: 46.28}
       end)
 
     {:ok, %{quotes: quotes}}
